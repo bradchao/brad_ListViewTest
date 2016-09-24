@@ -2,10 +2,12 @@ package brad.tw.listviewtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class Page3Activity extends AppCompatActivity {
     private ListView list;
@@ -29,25 +31,37 @@ public class Page3Activity extends AppCompatActivity {
     }
 
     private class MyAdapter extends BaseAdapter {
+        private LayoutInflater inflater;
+
+        MyAdapter(){
+            inflater = LayoutInflater.from(Page3Activity.this);
+        }
 
         @Override
         public int getCount() {
-            return 0;
+            return data.length;
         }
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return data[position];
         }
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
+            if (convertView == null){
+                convertView = inflater.inflate(R.layout.layout_item3,parent,false);
+            }
+
+            TextView title = (TextView) convertView.findViewById(R.id.item3_title);
+            title.setText(data[position]);
+
+            return convertView;
         }
     }
 
