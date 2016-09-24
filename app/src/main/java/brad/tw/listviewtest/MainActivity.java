@@ -5,8 +5,14 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
     private ListView list;
+    private LinkedList<HashMap<String,String>> data;
+    private String[] from = {};
+    private int[] to = {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +24,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListView(){
-        SimpleAdapter adapter = new SimpleAdapter();
+        data = new LinkedList<>();
+
+        
+
+
+
+        SimpleAdapter adapter =
+                new SimpleAdapter(this, data, R.layout.layout_item,
+                        from, to);
         list.setAdapter(adapter);
     }
 }
