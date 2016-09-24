@@ -68,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,
                         "p = " + position,
                         Toast.LENGTH_SHORT).show();
-                gotoPage2(position);
+                if (position==0){
+                    gotoPage3();
+                }else {
+                    gotoPage2(position);
+                }
             }
         });
 
@@ -93,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    private void gotoPage3(){
+        Intent it = new Intent(this, Page3Activity.class);
+        startActivity(it);
+    }
 
     public void addItem(View v){
         String input = this.input.getText().toString();
