@@ -2,6 +2,7 @@ package brad.tw.listviewtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -57,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 new SimpleAdapter(this, data, R.layout.layout_item,
                         from, to);
         list.setAdapter(adapter);
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("brad", "onClick");
+            }
+        });
     }
 
     public void addItem(View v){
