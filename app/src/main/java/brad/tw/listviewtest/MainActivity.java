@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -58,13 +60,33 @@ public class MainActivity extends AppCompatActivity {
                 new SimpleAdapter(this, data, R.layout.layout_item,
                         from, to);
         list.setAdapter(adapter);
-        list.setOnClickListener(new View.OnClickListener() {
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Log.d("brad", "onClick");
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,
+                        "p = " + position,
+                        Toast.LENGTH_SHORT).show();
+                gotoPage2(position);
+            }
+        });
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("brad", "p = " + position);
+                removeItem(position);
+                return true;
             }
         });
     }
+
+    private void gotoPage2(int p){
+    }
+
+    private void removeItem(int n){
+    }
+
 
     public void addItem(View v){
         String input = this.input.getText().toString();
