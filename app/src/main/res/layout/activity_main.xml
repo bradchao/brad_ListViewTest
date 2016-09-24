@@ -4,7 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/addItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:onClick="addItem"
+            android:layout_alignParentRight="true"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/addItem"
+            android:layout_alignTop="@id/addItem"
+            android:layout_alignBottom="@id/addItem"
+            />
+    </RelativeLayout>
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
