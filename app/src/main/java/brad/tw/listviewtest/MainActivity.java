@@ -1,5 +1,6 @@
 package brad.tw.listviewtest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,9 +83,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoPage2(int p){
+        Intent it = new Intent(this, Page2Activity.class);
+        it.putExtra("title", (String)data.get(p).get(from[0]));
+        startActivity(it);
     }
 
     private void removeItem(int n){
+        data.remove(n);
+        adapter.notifyDataSetChanged();
     }
 
 
